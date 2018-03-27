@@ -25,6 +25,7 @@ class AP_Princeton extends book {
 }
 public class AbstractDemo {
 	public static void main(String[] args) {
+		//You can NOT instantiate a book object
 		book myAPbook=new AP_Princeton();
 		myAPbook.flip_page();
 		/*
