@@ -17,5 +17,7 @@ public class SimpleIfUsage {
 		} else {
 			System.out.println("You failed the exam");
 		}
+		if (passed)
+			System.out.println("You passed the exam"); //this is also ok
 	}
 }
