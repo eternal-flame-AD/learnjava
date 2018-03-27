@@ -1,15 +1,19 @@
 package classes;
 abstract class book {
+	public static String material="paper";
 	public String ISBN;
 	public String title;
-	public int pagenow=1;
+	public int pagenow;
 	protected book() { //constructor dont have return types
-		this.pagenow=100; 
+		this.pagenow=1; 
 	}
 	public void flip_page() {
 		pagenow++;
 		System.out.println("Flipped to page "+pagenow);
 	}
+}
+abstract class Electronicbook extends book {
+	public static String material="Electrical device";
 }
 class AP_Princeton extends book {
 	public String ISBN="978-1-101-91988-0";
@@ -26,17 +30,24 @@ class AP_Princeton extends book {
 		return Customer_review;
 	}
 }
+class Python_docs extends Electronicbook {
+	public String title="Python docs";
+}
 public class AbstractDemo {
 	public static void main(String[] args) {
 		//You can NOT instantiate a book object
+		System.out.println(book.material); //paper
 		book myAPbook=new AP_Princeton();
 		myAPbook.flip_page();
 		/*
-		 * FLiiping page of:Cracking the AP CSA Exam
-		 * Flipped to page 101
+		 * FLipping page of:Cracking the AP CSA Exam
+		 * Flipped to page 2
 		 */
 		((AP_Princeton)myAPbook).write_review("Sucks..."); //explicitly tell java this is an instance of AP_Princeton or it will NOT compile
 		AP_Princeton anotherAPbook=new AP_Princeton();
 		System.out.println(anotherAPbook.read_review()); //Sucks...
+		book myPythondoc=new Python_docs();
+		System.out.println(myPythondoc.material); // paper !!!!
+		System.out.println(((Electronicbook)myPythondoc).material); //Electrical device
 	}
 }
