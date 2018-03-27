@@ -1,4 +1,5 @@
 package classes;
+
 interface student {	
 	//abstract static int studentID=0; // eclipse don't accept this but it does compile
 	int studentID=0;
