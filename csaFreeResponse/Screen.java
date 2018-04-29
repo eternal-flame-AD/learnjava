@@ -42,6 +42,8 @@ public class Screen {
 		for (Pixel a:target) {
 			if (a.getCol()>col) {
 				pos++;
+			} else {
+				break;
 			}
 		}
 		target.add(pos,new Pixel(row,col));
