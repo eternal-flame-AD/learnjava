@@ -21,7 +21,7 @@ class AP_Princeton extends book {
 	private static String Customer_review;
 	public void flip_page() {
 		System.out.println("FLipping page of:"+this.title);
-		super.flip_page();  //Not this.super
+		super.flip_page();  //Not this.super calls the flip_page method of class book
 	}
 	public void write_review(String rev) {
 		this.Customer_review=rev;

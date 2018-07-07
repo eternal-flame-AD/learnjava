@@ -7,24 +7,24 @@ public class TSchool {
 		Elective elec1=new Elective("e1",2);
 		Elective elec2=new Elective("e2",1);
 		Elective elec3=new Elective("e3",0);
-		Student stu1=new Student(elec1,elec2,elec3);
-		Student stu2=new Student(elec2,elec3,elec1);
-		Student stu3=new Student(elec1,elec2,elec3);
-		Student stu4=new Student(elec1,elec2,elec3);
-		Student stu5=new Student(elec3,elec2,elec1);
+		Student2 stu1=new Student2(elec1,elec2,elec3);
+		Student2 stu2=new Student2(elec2,elec3,elec1);
+		Student2 stu3=new Student2(elec1,elec2,elec3);
+		Student2 stu4=new Student2(elec1,elec2,elec3);
+		Student2 stu5=new Student2(elec3,elec2,elec1);
 		ArrayList<Elective> elecs=new ArrayList<Elective>();
 		elecs.add(elec1);
 		elecs.add(elec2);
 		elecs.add(elec3);
-		ArrayList<Student> studs=new ArrayList<Student>();
+		ArrayList<Student2> studs=new ArrayList<Student2>();
 		studs.add(stu1);
 		studs.add(stu2);
 		studs.add(stu3);
 		studs.add(stu4);
 		studs.add(stu5);
-		School school=new School(studs,elecs);
+		School2 school=new School2(studs,elecs);
 		school.assignElectivesToStudents();
-		Iterator<Student> iterstu=studs.iterator();
+		Iterator<Student2> iterstu=studs.iterator();
 		while (iterstu.hasNext()) {
 			System.out.println(iterstu.next().hasElective());
 		}
@@ -32,15 +32,15 @@ public class TSchool {
 		while (iterelec.hasNext()) {
 			System.out.println(iterelec.next().getClassSize());
 		}
-		ArrayList<Student> result=school.studentsWithoutElectives();
+		ArrayList<Student2> result=school.studentsWithoutElectives();
 		System.out.println(result.size());
 	}
 }
 
-class School {
-	private ArrayList<Student> studentList;
+class School2 {
+	private ArrayList<Student2> studentList;
 	private ArrayList<Elective> electiveList;
-	public School(ArrayList<Student> stud,ArrayList<Elective> elec) {
+	public School2(ArrayList<Student2> stud,ArrayList<Elective> elec) {
 		studentList=stud;
 		electiveList=elec;
 	}
@@ -71,9 +71,9 @@ class School {
 	}
 	public void assignElectivesToStudents() {
 		/* implemented in part (b) */
-		Iterator<Student> stud=studentList.iterator();
+		Iterator<Student2> stud=studentList.iterator();
 		while (stud.hasNext()) {
-			Student curr=stud.next();
+			Student2 curr=stud.next();
 			for (int i=0;i<3;i++) {
 				Elective elec=this.getElectiveByName(curr.getChoice(i));
 				if (elec.getMaxClassSize()>elec.getClassSize()) {
@@ -84,12 +84,12 @@ class School {
 			}
 		}
 	}
-	public ArrayList<Student> studentsWithoutElectives() {
+	public ArrayList<Student2> studentsWithoutElectives() {
 		/* implemented in part (c) */
-		ArrayList<Student> result=new ArrayList<Student>();
-		Iterator<Student> iter=studentList.iterator();
+		ArrayList<Student2> result=new ArrayList<Student2>();
+		Iterator<Student2> iter=studentList.iterator();
 		while (iter.hasNext()) {
-			Student curr=iter.next();
+			Student2 curr=iter.next();
 			if (!curr.hasElective()) {
 				result.add(curr);
 			}
@@ -99,10 +99,10 @@ class School {
 	
 }
 
-class Student {
+class Student2 {
 	private boolean assigned = false;
 	private Elective[] choice = new Elective[3];
-	public Student(Elective e1, Elective e2, Elective e3) {
+	public Student2(Elective e1, Elective e2, Elective e3) {
 		choice[0]=e1;
 		choice[1]=e2;
 		choice[2]=e3;
@@ -135,7 +135,7 @@ class Elective {
 	public int getClassSize() {
 		return size;
 	}
-	public void addStudent(Student s) {
+	public void addStudent(Student2 s) {
 		size++;
 	}
 }

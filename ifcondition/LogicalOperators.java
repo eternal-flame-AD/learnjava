@@ -22,5 +22,6 @@ public class LogicalOperators {
 		if (!(bob>=60)) {    //here a inner parenesis is necessary because ! is higher than comparison operators
 			System.out.println("Bob failed the exam.");
 		}
+		input.close();
 	}
 }
